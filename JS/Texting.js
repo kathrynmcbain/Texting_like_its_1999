@@ -1,4 +1,4 @@
-const abc = document.getElementById("1");
+const abc = document.getElementById("2");
 const ghi = document.getElementById("4");
 const output = document.getElementById('screen');
 
