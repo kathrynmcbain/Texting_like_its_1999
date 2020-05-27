@@ -58,5 +58,5 @@ function resetButtonTimeout() {
         text = textBuffer;
         incrementer - 1;
         renderText();
-    }, 2000);
+    }, 1000);
 }
