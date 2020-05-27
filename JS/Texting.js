@@ -48,7 +48,7 @@ function renderText() {
     output.innerHTML = buttonTimeout !== null ? textBuffer : text;
 }
 
-function resetButtonTimeout(fromTimer) {
+function resetButtonTimeout() {
     clearTimeout(buttonTimeout);
 
     buttonTimeout = setTimeout(() => {
