@@ -36,8 +36,8 @@ function sameButtonPressed() {
 }
 
 function incrementBuffer() {
-    if (currentArray && incrementer < currentArray.length - 1) {
-        incrementer++;
+    if (currentArray) {
+        incrementer = incrementer < currentArray.length - 1 ? incrementer + 1 : 0;
         textBuffer = text + currentArray[incrementer];
     }
 
