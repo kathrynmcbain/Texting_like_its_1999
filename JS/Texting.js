@@ -1,62 +1,20 @@
 const output = document.getElementById('screen');
 
 let buttonTimeout = null;
-let currentButton;
-let currentArray;
-let incrementer = -1;
+let incrementer = 0;
 
-let text = '';
-let textBuffer = '';
+let text='';
+let newLetter='';
 
-function buttonPressed(button, letterArray) {
-    if (buttonTimeout === null || currentButton != button.id) {
-        nextButtonPressed(button, letterArray);
-    } else {
-        sameButtonPressed();
+function buttonPressed(letterArray){
+    if (!buttonTimeout) {
+        buttonTimeout = setTimeout(() => {
+            newLetter=letterArray[incrementer-1];
+            text=text+newLetter;
+            incrementer = 0;
+            buttonTimeout = null;
+        }, 1000);
     }
-}
-
-function nextButtonPressed(button, newLetterArray) {
-    if (textBuffer.length) {
-        text = textBuffer;
-    }
-
-    resetButtonTimeout(buttonTimeout);
-
-    currentButton = button.id;
-    currentArray = newLetterArray; 
-    incrementer = -1;
-
-    incrementBuffer();
-}
-
-function sameButtonPressed() {
-    incrementBuffer();
-    resetButtonTimeout();
-}
-
-function incrementBuffer() {
-    if (currentArray && incrementer < currentArray.length - 1) {
-        incrementer++;
-        textBuffer = text + currentArray[incrementer];
-    }
-
-    renderText();
-}
-
-function renderText() {
-    output.innerHTML = buttonTimeout !== null ? textBuffer : text;
-}
-
-function resetButtonTimeout() {
-    clearTimeout(buttonTimeout);
-
-    buttonTimeout = setTimeout(() => {
-        clearTimeout(buttonTimeout);
-        buttonTimeout = null;
-        currentButton = null;
-        text = textBuffer;
-        incrementer - 1;
-        renderText();
-    }, 1000);
+    output.innerHTML = text+letterArray[incrementer];
+    incrementer += 1;
 }
