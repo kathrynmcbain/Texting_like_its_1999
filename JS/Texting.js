@@ -36,8 +36,8 @@ function sameButtonPressed() {
 }
 
 function incrementBuffer() {
-    if (currentArray && incrementer < currentArray.length - 1) {
-        incrementer++;
+    if (currentArray) {
+        incrementer = incrementer < currentArray.length - 1 ? incrementer + 1 : 0;
         textBuffer = text + currentArray[incrementer];
     }
 
@@ -58,5 +58,5 @@ function resetButtonTimeout() {
         text = textBuffer;
         incrementer - 1;
         renderText();
-    }, 1000);
+    }, 2000);
 }
